@@ -1,0 +1,43 @@
+-> open : stdmode
+begin ->
+{
+  
+    for: from i = 1 to i <= 100
+    {
+        ceven = 0
+        codd = 0
+        for: from j = 1 to j <= i
+            { 
+                if ( i % j == 0)
+                {
+                   out< j
+                }
+
+                e
+                {
+                    if ( j % 2 == 0 )
+                      {
+                      
+                          ceven = ceven + 1
+                      } 
+                    
+                    e
+                      {
+                          codd = codd + 1
+                      }
+                       
+                }
+
+                j = j + 1
+                   
+            }
+
+        out< i 
+        out< ceven
+        out< codd
+
+        i = i + 1
+    }
+   
+ 
+}

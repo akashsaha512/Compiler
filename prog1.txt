@@ -1,0 +1,35 @@
+grammar prog1 ;
+
+root : declare func ;
+declare : '->' 'open' ':' ID ;
+
+
+
+func : 'begin' '->' scope ;
+
+
+statement : (
+   variable_declare 
+   | condition_if
+   | loop
+   | print
+)+
+;
+variable_declare : exp ;
+exp : ID SIGN DIGIT | ID SIGN SIGN | ID | ID SIGN | ID SIGN ID | ID SIGN DIGIT SIGN DIGIT | ID SIGN ID SIGN ID ;
+
+condition_if: 'if' '(' check ')' scope | 'if' '(' check ')' scope 'eif' '(' check ')' scope 'e' scope | 'if' '(' check ')' scope 'e' scope | 'e' scope;
+
+loop:'for:' 'from' exp 'to' exp scope | 'while:' exp scope ;
+
+print : 'out<' ID  ;
+
+
+
+
+check : ID SIGN DIGIT | ID SIGN SIGN | exp SIGN DIGIT ;
+SIGN : '=' | '+' | '-' | '*' | '/' | '%' | '<=' | '>=' | '!=' | '==' | '++' | '--';
+ID : [a-zA-Z]+ ;
+DIGIT: [0-9]+ ;
+scope : '{' statement '}' ;
+WS : [ \t\r\n]+ -> skip ;
